@@ -1,0 +1,21 @@
+/*!  Section 2 - Body Styles */body{font-family:'Lato',sans-serif;margin:0;background:#79e9ed}
+.nopadding{padding:0}.pagecontent{padding:0;background:#fff;padding:20px 0}.pagecontent .row{max-width:53rem}
+.home-menu{padding:0}img.hero-image{display:block;margin-left:auto;margin-right:auto}
+.homepagecontent{padding:0}.welcome,.get-involved,.the-story,.encouragement,.media{min-height:350px}
+.welcome{background:#fff;padding-bottom:20px}.get-involved{background:#56cbdf;background-image:url(images/getinvolved_section.jpg);background-repeat:no-repeat;background-position:center}
+.page-get-involved{background:#56cbdf;background-image:url(images/getinvolved_section.jpg);background-position:center;padding:0}
+.the-story{background:#fff;background-image:url(images/thestory_section.jpg);background-repeat:no-repeat;background-position:center}
+.page-the-story{background:#fff;background-image:url(images/thestory_section.jpg);background-position:center}
+.encouragement{background:#ffad4a;background-image:url(images/encouragement_section.jpg);background-repeat:no-repeat;background-position:center}
+.page-encouragement{background:#ffad4a;background-image:url(images/encouragement_section.jpg);background-repeat:repeat;background-position:center top;padding:0}
+.media{background:#fff;background-image:url(images/media_section.jpg);background-repeat:no-repeat;background-position:center}
+.page-media{background:#fff;background-image:url(images/page_media_section.jpg);background-position:center}
+.sectionimage img{margin-top:-30px}ul.gi-buttons{list-style:none}.pc-left{border-right:1px #999 solid}
+.pagecontent .event-background{background:0;border-bottom:1px #999 solid}.page-media .event-background{border:1px #999 solid}
+.encouragement-quote li{background:#fff;margin-bottom:10px}blockquote{border-left:0}
+blockquote:before{content:'\201C';font-size:70px;font-weight:400;line-height:.8;padding-right:9px;position:absolute;left:-9px;top:-3px}
+.page-get-involved .pc-left,.page-get-involved .pc-right{background:rgba(250,250,250,0.3)}
+.page-encouragement .pc-left,.page-encouragement .pc-right{background:rgba(250,250,250,0.2)}
+@media only screen and (max-width:64.063em){.sectionimage img{margin-top:10px;margin-bottom:15px;margin-left:auto;margin-right:auto;display:block}
+.button.large{width:80%}.small-block-grid-1>li:nth-of-type(1n+1){clear:both;width:100%}
+}

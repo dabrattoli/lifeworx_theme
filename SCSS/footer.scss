@@ -1,0 +1,23 @@
+/* Section 5 - Footer Area */
+footer{background: #333333;color: #fff;}
+.site-footer{padding: 0;}
+footer img {display: block; margin: 5px auto;}
+footer p, footer a, footer h3 {color: #fff;}
+footer h3 {margin-bottom: 0;}
+footer p {margin-bottom: 0;}
+footer ul{list-style: none;}
+.site-info{border-top: 1px solid #aaa; padding: 7px 5px;}
+.site-info span {color: #fff;}
+.site-info a, .site-info a:visited{color:#008CBA;}
+.footer-contentinfo-logo{padding: 0;}
+.footer-contentinfo-logo a img{margin: 20px 0 auto;}
+.footermenu h3{text-align: center; text-decoration: underline;}
+.footermenu .menu-primary-container{text-align: center;}
+.footermenu ul{font-size: 1.3rem;margin-left: -11px;}
+.footer-contentinfo{margin-top: 10px;}
+.footer-contentinfo span{font-size: 0.9rem;}
+li.support-container{padding-bottom: 0;}
+.footermenu ul li a, .footermenu ul li a:visited{color: #fff;}
+@media only screen and (max-width: 40em) {
+    .footer-contentinfo{margin-top: 15px;}
+}

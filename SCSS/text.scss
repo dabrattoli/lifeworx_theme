@@ -1,0 +1,16 @@
+/*Section 6 Text */
+h1, h2, h3, h4, h5 {font-family: 'Open Sans', sans-serif;}
+h1.site-title{font-family: 'Cookie', cursive;font-size: 4.15rem; @include text-shadow(3px, 3px, 1px, rgba(0,0,0,1));margin-top: -17px;}
+h1.site-title a{color: #fff;}
+p{font-family: 'Lato', sans-serif;}
+h2.site-description{color: #eff;text-shadow: 3px 2px 1px black;margin-top: -20px;font-size: 1.85rem;}
+.footer-contentinfo h3 a{color: #fff;font-size: 1.3875rem;} 
+.site-branding span{color: #000;font-size: 1.4rem;font-weight: bold;}
+.home-info h2{text-align: center;}
+.featured-container ul li h3{text-align: center;line-height: 200px;color: #fff;font-size: 2.0rem;@include text-shadow(3px, 3px, 1px, rgba(0,0,0,1));}
+.header-social h4{text-align: center; color: #fff;@include text-shadow(3px, 3px, 1px, rgba(0,0,0,1));margin: 0;}
+.header-social ul{line-height: 0.6;}
+@media only screen and (max-width: 40em) { 
+    h1.site-title, h2.site-description {text-align: center;}  
+    h1.site-title {margin-bottom: 15px;font-size: 3.15rem;}
+}

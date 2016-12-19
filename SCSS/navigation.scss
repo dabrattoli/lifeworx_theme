@@ -1,0 +1,9 @@
+/*! Section 4 - Navigation Styles  */
+.member-mainmenu .top-bar-section ul li > a {
+    color: #B3B3B3;
+}
+.mainmenu, .mainmenu .top-bar {
+    background: #550377;
+}
+.mainmenu{padding: 10px 0;}
+.mainmenu .top-bar-section li:not(.has-form) a:not(.button) {background: #550377;padding: 0px 0.9375rem; }
