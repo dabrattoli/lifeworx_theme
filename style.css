@@ -22,11 +22,11 @@ Section 6: Text
 *//*! Mixin Section : LCCC Mixins *//*!  Section 1 - Foundation Overrides */.row{max-width:75rem}
 .contain-to-grid .top-bar{margin-bottom:0;margin:0 auto;max-width:85.5rem}.top-bar-section ul li>a{font-family:'Lato',sans-serif;font-size:18px}
 /*!  Section 2 - Body Styles */body{font-family:'Lato',sans-serif;margin:0;background:#fff}
-.featured-container{margin:30px 0}.pcleft{border-right:2px solid #ccc;margin-top:15px}
-.pcright{margin-top:15px}.entry-header,.page-header{background:0}.entry-header h1.entry-title{text-decoration:underline}
+.featured-container{margin:30px 0;padding-left: 0.4375rem;padding-right: 0.4375rem;}.pcleft{border-right:2px solid #ccc;margin-top:15px}
+.pcright{margin-top:15px}.entry-header,.page-header{background:0}.entry-header h1.entry-title{text-decoration:underline}div.columns.pcleft.group .row{max-width: 62.5rem;}article{box-shadow:0 15px 15px -15px #dcdcdc;padding-bottom: 2rem;border-bottom: 1px solid #dcdcdc;}article:last-of-type{box-shadow: none;}div.columns.featured-container ul.groups-by-day li{text-align: center;}div.columns.featured-container ul.groups-by-day li.calendar-icon{height:166px;background-image:url(/wp-content/themes/lifeworx_theme/images/calendaricon_purple.svg);padding-top:.75rem;    background-repeat: no-repeat;background-position: center;}div.columns.featured-container ul.groups-by-day li.calendar-icon h4{font-weight: bold;line-height: 141px;}div.columns.featured-container ul.groups-by-day li.calendar-icon h4 a{ color:rgb(0, 128, 170);  }div.columns.featured-container ul.groups-by-day li.calendar-icon h4 a:visited{ color:rgb(0, 128, 170); }
 .entry-footer{background:0;color:#000}.entry-footer span a{color:#008cba}/*! Section 3 - Header */header{background:#20b73c}
-.home-menu,.site-header{padding:0}.nopadding{padding:0}.site-branding-logo{padding-right:0;width:21%}
-.site-branding-logo a img{margin:10px 0}.site-branding{padding-left:0;margin-top:10px;width:78%}
+.home-menu,.site-header{padding:0}.nopadding{padding:0}.site-branding-logo{padding-right:0;width:27%}
+.site-branding-logo a img{margin:18px 0 10px 0;}.site-branding{padding-left:0;margin-top:10px;width:72%}
 .member-mainmenu{border-bottom:1px inset #fff}.home-menu{border-top:1px inset #000;border-bottom:3px solid #000}
 .search-container{margin-top:20px}.social-icons-header .fi-social-linkedin,.social-icons-header .fi-social-facebook{font-size:4.5rem;color:#fff}
 @media only screen and (max-width:40em){.site-branding,.site-branding-logo{width:100%}

@@ -316,7 +316,142 @@ function wpbeginner_numeric_posts_nav() {
 
 }
 
+// Register Custom Post Type
+function custom_post_type() {
 
+	$labels = array(
+		'name'                  => _x( 'Groups', 'Post Type General Name', 'text_domain' ),
+		'singular_name'         => _x( 'Group', 'Post Type Singular Name', 'text_domain' ),
+		'menu_name'             => __( 'Groups', 'text_domain' ),
+		'name_admin_bar'        => __( 'Groups', 'text_domain' ),
+		'archives'              => __( 'Group Archives', 'text_domain' ),
+		'attributes'            => __( 'Group Attributes', 'text_domain' ),
+		'parent_item_colon'     => __( 'Parent Group:', 'text_domain' ),
+		'all_items'             => __( 'All Groups', 'text_domain' ),
+		'add_new_item'          => __( 'Add New Group', 'text_domain' ),
+		'add_new'               => __( 'Add New', 'text_domain' ),
+		'new_item'              => __( 'New Group', 'text_domain' ),
+		'edit_item'             => __( 'Edit Group', 'text_domain' ),
+		'update_item'           => __( 'Update Group', 'text_domain' ),
+		'view_item'             => __( 'View Group', 'text_domain' ),
+		'view_items'            => __( 'View Groups', 'text_domain' ),
+		'search_items'          => __( 'Search Groups', 'text_domain' ),
+		'not_found'             => __( 'Not found', 'text_domain' ),
+		'not_found_in_trash'    => __( 'Not found in Trash', 'text_domain' ),
+		'featured_image'        => __( 'Featured Image', 'text_domain' ),
+		'set_featured_image'    => __( 'Set featured image', 'text_domain' ),
+		'remove_featured_image' => __( 'Remove featured image', 'text_domain' ),
+		'use_featured_image'    => __( 'Use as featured image', 'text_domain' ),
+		'insert_into_item'      => __( 'Insert into Group', 'text_domain' ),
+		'uploaded_to_this_item' => __( 'Uploaded to this Group', 'text_domain' ),
+		'items_list'            => __( 'Groups list', 'text_domain' ),
+		'items_list_navigation' => __( 'Groups list navigation', 'text_domain' ),
+		'filter_items_list'     => __( 'Filter Groups list', 'text_domain' ),
+	);
+	$args = array(
+		'label'                 => __( 'Group', 'text_domain' ),
+		'description'           => __( 'This post type is for the creation and storage of Lifeworx Groups', 'text_domain' ),
+		'labels'                => $labels,
+		'supports'              => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'revisions', 'custom-fields', ),
+//		'taxonomies'            => array( 'category' ),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 5,
+		'menu_icon'             => 'dashicons-groups',
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => true,		
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'capability_type'       => 'post',
+		'show_in_rest'          => true,
+		'rest_base'             => 'group',
+		'rest_controller_class' => 'WP_REST_Posts_Controller',
+	);
+	register_post_type( 'groups', $args );
+
+}
+add_action( 'init', 'custom_post_type', 0 );
+
+function be_register_taxonomies() {
+	$taxonomies = array(
+		array(
+			'slug'         => 'day_of_week',
+			'single_name'  => 'Day of the Week',
+			'plural_name'  => 'Days of the Week',
+			'post_type'    => 'groups',
+					'hierarchical' => true,
+			'rewrite'      => array( 'slug' => 'day_of_week' ),
+		)
+	
+	);
+	foreach( $taxonomies as $taxonomy ) {
+		$labels = array(
+			'name' => $taxonomy['plural_name'],
+			'singular_name' => $taxonomy['single_name'],
+			'search_items' =>  'Search ' . $taxonomy['plural_name'],
+			'all_items' => 'All ' . $taxonomy['plural_name'],
+			'parent_item' => 'Parent ' . $taxonomy['single_name'],
+			'parent_item_colon' => 'Parent ' . $taxonomy['single_name'] . ':',
+			'edit_item' => 'Edit ' . $taxonomy['single_name'],
+			'update_item' => 'Update ' . $taxonomy['single_name'],
+			'add_new_item' => 'Add New ' . $taxonomy['single_name'],
+			'new_item_name' => 'New ' . $taxonomy['single_name'] . ' Name',
+			'menu_name' => $taxonomy['plural_name']
+		);
+		
+		$rewrite = isset( $taxonomy['rewrite'] ) ? $taxonomy['rewrite'] : array( 'slug' => $taxonomy['slug'] );
+		$hierarchical = isset( $taxonomy['hierarchical'] ) ? $taxonomy['hierarchical'] : true;
+	
+		register_taxonomy( $taxonomy['slug'], $taxonomy['post_type'], array(
+			'hierarchical' => $hierarchical,
+			 'show_tagcloud' => false,
+			'labels' => $labels,
+			'show_ui' => true,
+			'query_var' => true,
+			'show_admin_column' => true,
+			'rewrite' => $rewrite,
+		));
+	}
+	
+}
+add_action( 'init', 'be_register_taxonomies' );
+
+
+/*
+ *
+ * Add filtering support to Admin list for the LCCC Event Custom Post Type.
+ *
+ */
+
+function lc_event_cpt_add_taxonomy_filters() {
+	global $typenow;
+ 
+	// an array of all the taxonomyies you want to display. Use the taxonomy name or slug
+	$taxonomies = array('day_of_week');
+ 
+	// must set this to the post type you want the filter(s) displayed on
+	if( $typenow == 'groups' ){
+ 
+		foreach ($taxonomies as $tax_slug) {
+			$tax_obj = get_taxonomy($tax_slug);
+			$tax_name = $tax_obj->labels->name;
+			$terms = get_terms($tax_slug);
+			if(count($terms) > 0) {
+				echo "<select name='$tax_slug' id='$tax_slug' class='postform'>";
+				echo "<option value=''>Show All $tax_name</option>";
+				foreach ($terms as $term) { 
+					echo '<option value='. $term->slug, $_GET[$tax_slug] == $term->slug ? ' selected="selected"' : '','>' . $term->name .' (' . $term->count .')</option>'; 
+				}
+				echo "</select>";
+			}
+		}
+	}
+}
+add_action( 'restrict_manage_posts', 'lc_event_cpt_add_taxonomy_filters' );
 
 /**
  * Implement the Custom Header feature.

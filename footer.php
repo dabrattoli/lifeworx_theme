@@ -14,12 +14,12 @@
         <div class="small-12 medium-12 large-12 columns site-footer-grid" data-equalizer>
             <ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-3 footerlist">
                 <li data-equalizer-watch>
-                    <div class="small-12 medium-4 large-4 columns footer-contentinfo-logo show-for-medium-up">
+                    <div class="small-12 medium-6 large-6 columns footer-contentinfo-logo show-for-medium-up">
                          <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"> 
                 <img alt="ACL Logo" src="<?php echo get_bloginfo('stylesheet_directory');?>/images/footer-ACL_Logo.png"> 
                 </a>
                     </div>
-                    <div class="small-12 medium-8 large-8 columns footer-contentinfo">
+                    <div class="small-12 medium-8 large-8 columns footer-contentinfo" style="    float: left;padding-left: 0;">
                         <h3><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h3>
                            <?php
                 // The Query
@@ -62,7 +62,7 @@
 		<div class="small-12 medium-12 large-12 columns site-info">
 			<a href="<?php echo esc_url( __( 'http://wordpress.org/', 'irrlc_framework' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'irrlc_framework' ), 'WordPress' ); ?></a>
 			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'irrlc_framework' ), 'irrlc_framework', '<a href="http://www.infiniterealityllc.com" rel="designer">David Brattoli</a>' ); ?>
+			<?php printf( esc_html__( 'Custom Theme: %1$s %2$s.', 'irrlc_framework' ), 'Lifeworx Theme', 'Built by <a href="http://www.infiniterealityllc.com" rel="designer">Infinite Reality LLC</a>' ); ?>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->

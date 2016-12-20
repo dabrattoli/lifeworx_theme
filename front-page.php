@@ -87,34 +87,28 @@ get_header(); ?>
             <?php } ?>
     </div>  
     <div class="small-12 medium-12 large-12 columns featured-container" data-equalizer-watch>
-            <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-4">
-                      <?php
-                // The Query
-                $the_query = new WP_Query( array( 'category_name' => 'featured-service', 'order'=>'ASC' ) );
-                // The Loop
-                if ( $the_query->have_posts() ) {
-                    while ( $the_query->have_posts() ) {
-                        $the_query->the_post();
-                        ?>
-                <?php
-                $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 300,300 ), false, '' );        
-                ?>
-                <li> <a href="<?php the_permalink(); ?>">
-                    <div style="border:2px solid #000; background:linear-gradient(rgba(0, 0, 0, 0.35),rgba(0, 0, 0, 0.20)), url(<?php echo $src[0]; ?>);background-repeat: no-repeat;background-position: center;min-height: 200px;margin-bottom: 10px;">
-                    <?php
-                        the_title('<h3>','</h3>');
-                    ?>
-                    </div>
-                    </a>
-                </li>
-                <?php
-                    }
-                } else {
-                    // no posts found
-                }
-                /* Restore original Post Data */
-                wp_reset_postdata();
-            ?>
+            <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-7 groups-by-day">
+<?php
+// your taxonomy name
+$tax = 'day_of_week';
+
+// get the terms of taxonomy
+$terms = get_terms( $tax, $args = array(
+  'hide_empty' => false, // do not hide empty terms
+  'orderby' => 'term_id',    
+));
+
+// loop through all terms
+foreach( $terms as $term ) {
+
+    // Get the term link
+    $term_link = get_term_link( $term );
+
+        // display link to term archive
+        echo '<li class="calendar-icon"><h4><a href="' . esc_url( $term_link ) . '">' . $term->name .'</a></h4></li>';
+
+}
+?>
             </ul>
     </div>
 </div>
